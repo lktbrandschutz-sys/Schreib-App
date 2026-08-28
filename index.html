@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0757A8">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>PDF SchreibApp</title>
+</head>
+<body>
+<header>
+  <div><h1>PDF SchreibApp</h1><small id="count">0 Dokumente</small></div>
+  <div class="actions">
+    <button id="importBtn" title="PDF importieren">＋</button>
+    <button id="gridBtn" title="Kacheln">▦</button>
+    <button id="listBtn" title="Liste">☷</button>
+    <button id="deleteBtn" title="Markierte löschen">🗑</button>
+  </div>
+</header>
+
+<section id="toolbar">
+  <input id="search" placeholder="PDF oder Datum suchen">
+  <span id="status">Lange drücken = markieren</span>
+</section>
+
+<main id="library" class="grid"></main>
+
+<input type="file" id="fileInput" accept="application/pdf" hidden>
+
+<dialog id="nameDialog">
+  <form method="dialog">
+    <h3>PDF benennen</h3>
+    <input id="nameInput" required>
+    <menu>
+      <button value="cancel">Abbrechen</button>
+      <button id="nameOk" value="default">Importieren</button>
+    </menu>
+  </form>
+</dialog>
+
+<div id="editor" hidden>
+  <header>
+    <button id="backBtn">‹</button>
+    <strong id="editorTitle"></strong>
+    <div class="actions">
+      <button id="renameBtn">✎</button>
+      <button id="settingsBtn">⚙</button>
+      <button id="saveBtn">⇩</button>
+    </div>
+  </header>
+  <div id="pdfStage">
+    <canvas id="pdfCanvas"></canvas>
+    <canvas id="inkCanvas"></canvas>
+  </div>
+  <div id="pageInfo"></div>
+</div>
+
+<dialog id="settingsDialog">
+  <form method="dialog">
+    <h3>Einstellungen</h3>
+    <label>Stiftbreite <input id="width" type="range" min="1" max="16" value="2" step=".5"></label>
+    <label>Druckempfindlichkeit <input id="pressure" type="range" min=".1" max="1" value=".7" step=".05"></label>
+    <button>Fertig</button>
+  </form>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

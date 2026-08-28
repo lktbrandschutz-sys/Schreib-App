@@ -1,0 +1,9 @@
+{
+  "name": "PDF SchreibApp",
+  "short_name": "PDF SchreibApp",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#EEF7FA",
+  "theme_color": "#0757A8",
+  "icons": []
+}
